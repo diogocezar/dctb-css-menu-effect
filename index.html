@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CSS Menu Animation</title>
+	<style>
+		*{
+			margin:0px;
+			padding:0px;
+		}
+		nav .menu{
+			width: 60px;
+			height: 60px;
+			float: right;
+			margin-right: 10px;
+			margin-top: 10px;
+			position: relative;
+		}
+		nav .menu .background-menu{
+			height: 100%;
+			width: 100%;
+			float: left;
+			z-index:2;
+			position:absolute;
+			transition: all .3s ease-in-out;
+			background-color: #ccc;
+		}
+		nav .menu label{
+			position: absolute;
+			background-color: transparent;
+			height: 100%;
+			width: 100%;
+			float: left;
+			transition: all .3s ease-in-out;
+			z-index: 9;
+			cursor: pointer;
+		}
+		nav .menu label:hover ~ div.background-menu{
+			background-color: #ddd;
+		}
+		nav .menu label:hover ~ span:before{
+			transform: translate(0px, -3px);
+		}
+		nav .menu label:hover ~ span:after{
+			transform: translate(0px, 3px);
+		}
+		nav .menu #control-menu{
+			display: none;
+			position: absolute;
+			z-index: 10;
+		}
+		nav .menu span{
+			position: absolute;
+			width: 40px;
+			height: 6px;
+			top: 27px;
+			left: 10px;
+			z-index:3;
+			background-color: #fff;
+			transition: all .3s ease-in-out;
+		}
+		nav .menu span:before{
+			content: '';
+			position: absolute;
+			width: 40px;
+			height: 6px;
+			top: -12px;
+			left: 0px;
+			background-color: #fff;
+			transition: all .3s ease-in-out;
+		}
+		nav .menu span:after{
+			content: '';
+			position: absolute;
+			width: 40px;
+			height: 6px;
+			top: 12px;
+			left: 0px;
+			background-color: #fff;
+			transition: all .3s ease-in-out;
+		}
+		nav .menu #control-menu:checked ~ span{
+			background-color: transparent;
+		}
+		nav .menu #control-menu:checked ~ span:before{
+			transform: translate(0px, 13px) rotate(-45deg)!important;
+		}
+		nav .menu #control-menu:checked ~ span:after{
+			transform: translate(0px, -10px) rotate(45deg);
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<div class="menu">
+			<input type="checkbox" id="control-menu"/>
+			<label for="control-menu"></label>
+			<div class="background-menu"></div>
+			<span></span>
+		</div>
+	</nav>
+</body>
+</html>
